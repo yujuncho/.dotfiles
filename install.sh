@@ -12,7 +12,7 @@ echo "Setting up bash-it"
 git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it
 ln -s ~/.dotfiles/custom.aliases.bash ~/.bash_it/aliases/custom.aliases.bash
 cp ~/.dotfiles/.bashrc ~/.bashrc
-~/.bash_it/install.sh --silent -f
+~/.bash_it/install.sh --append-to-config -f
 
 echo "Setting up bash theme"
 
