@@ -1,3 +1,6 @@
+# gh CLI
+alias ghu='sudo apt update; sudo apt install gh'
+
 # Vim
 alias v='vim'
 
