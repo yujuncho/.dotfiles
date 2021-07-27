@@ -1,11 +1,16 @@
-SEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+#!/bin/sh
 
-# vim
-ln -s ${BASEDIR}/vimrc ~/.vimrc
-ln -s ${BASEDIR}/vim/ ~/.vim
+echo "Starting Install"
+echo "Setting up vim with vim-plug"
 
-# zsh
-ln -s ${BASEDIR}/zshrc ~/.zshrc
+rm -rf ~/.vimrc
+ln -s ~/.dotfiles/.vimrc ~/.vimrc
+vim -es -u vimrc -i NONE -c "PlugInstall" -c "qa"
 
-# git
-ln -s ${BASEDIR}/gitconfig ~/.gitconfig
+echo "Setting up bash-it"
+
+git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it
+ln -s ~/.dotfiles/custom.aliases.bash ~/.bash_it/aliases/custom.aliases.bash
+~/.bash_it/install.sh
+
+echo "Completed Install"
