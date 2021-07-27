@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "Starting Install"
+echo "Starting install"
 echo "Setting up vim with vim-plug"
 
 rm -rf ~/.vimrc
@@ -11,6 +11,16 @@ echo "Setting up bash-it"
 
 git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it
 ln -s ~/.dotfiles/custom.aliases.bash ~/.bash_it/aliases/custom.aliases.bash
-~/.bash_it/install.sh
+cp ~/.dotfiles/.bashrc ~/.bashrc
+~/.bash_it/install.sh --silent -f
 
-echo "Completed Install"
+echo "Setting up bash theme"
+
+BASH_THEME=metal
+sed -i "s/BASH_IT_THEME=.*/BASH_IT_THEME='${BASH_THEME}'/" ~/.bashrc
+
+echo "Completed install"
+
+echo "Restarting bash"
+exec bash
+

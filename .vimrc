@@ -149,7 +149,7 @@ set expandtab
 
 
 "------------------------------------------------------------
-" Mappings {{{1
+" Mappings
 "
 " Useful mappings
 
@@ -161,6 +161,8 @@ map Y y$
 " next search
 nnoremap <C-L> :nohl<CR><C-L>
 
+" Map <C-n> to focus on NERDTree
+map <silent> <C-n> :NERDTreeToggle<CR>
 
 "------------------------------------------------------------
 " Vim-plug
