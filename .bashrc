@@ -134,3 +134,7 @@ export NVM_DIR="$HOME/.nvm"
 #   fi
 # fi
 
+# Loads DENO
+export DENO_INSTALL="/home/elephant/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
