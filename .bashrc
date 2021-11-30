@@ -116,6 +116,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# Set up nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -133,10 +134,6 @@ export NVM_DIR="$HOME/.nvm"
 #     ssh-add
 #   fi
 # fi
-
-# Loads DENO
-export DENO_INSTALL="/home/elephant/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
 
 # Set up automatic usage of "nvm use"
 cdnvm() {
@@ -184,4 +181,9 @@ cdnvm() {
 
 alias cd='cdnvm'
 cd "$PWD"
+
+# Update PATH
+export DENO_INSTALL="/home/elephant/.deno"
+export PYTHON_PACKAGES="`python3 -m site --user-base`"
+export PATH="$PYTHON_PACKAGES/bin:$DENO_INSTALL/bin:$PATH"
 
