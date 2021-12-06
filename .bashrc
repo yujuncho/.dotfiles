@@ -122,18 +122,18 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Search for ssh-agent
-# ssh-add -l &>/dev/null
-# if [ "$?" == 2 ]; then
-#   test -r ~/.ssh-agent && \
-#     eval "$(<~/.ssh-agent)" >/dev/null
-# 
-#   ssh-add -l &>/dev/null
-#   if [ "$?" == 2 ]; then
-#     (umask 066; ssh-agent > ~/.ssh-agent)
-#     eval "$(<~/.ssh-agent)" >/dev/null
-#     ssh-add
-#   fi
-# fi
+ssh-add -l &>/dev/null
+if [ "$?" == 2 ]; then
+  test -r ~/.ssh-agent && \
+    eval "$(<~/.ssh-agent)" >/dev/null
+
+  ssh-add -l &>/dev/null
+  if [ "$?" == 2 ]; then
+    (umask 066; ssh-agent > ~/.ssh-agent)
+    eval "$(<~/.ssh-agent)" >/dev/null
+    ssh-add -t 1d
+  fi
+fi
 
 # Set up automatic usage of "nvm use"
 cdnvm() {
